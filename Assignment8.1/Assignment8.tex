@@ -1,0 +1,369 @@
+
+  
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment 8}
+\author{Adarsh Sai - AI20BTECH11001}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all python codes from 
+\begin{lstlisting}
+https://github.com/Adarsh541/AI1103-prob-and-ranvar/blob/main/Assignment8.1/codes/Assignment8.1.py
+\end{lstlisting}
+%
+and latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/Adarsh541/AI1103-prob-and-ranvar/blob/main/Assignment8.1/Assignment8.1.tex
+\end{lstlisting}
+\section{Problem}
+Let $X_1,X_2,X_3,X_4,X_5$ be a random sample of size 5 from a population having standard normal distribution.If 
+$\overline{X}=\frac{1}{5}\sum_{i=1}^5 X_i$ and $T=\sum_{i=1}^5\brak{X_i-\overline{X}}^2$
+then $\mean{T^2\overline{X}^2}$ is equal to 
+\begin{enumerate}
+    \item 3
+    \item 3.6
+    \item 4.8
+    \item 5.2
+\end{enumerate}
+\section{Solution}
+Let $\vec{x} \sim N\brak{\vec{0},\vec{I}}$ be a standard normal random vector 
+\begin{align}
+    \vec{x}=\myvec{X_1\\
+             X_2\\
+             X_3\\
+             X_4\\
+             X_5}
+\end{align}
+Then $\overline{X}$ can be written as
+\begin{align}
+    \overline{X}=\frac{1}{5}\vec{u}^{\top}\vec{x}
+\end{align}
+where 
+\begin{align}
+    \vec{u}=\myvec{1\\
+                      1\\
+                      1\\
+                      1\\
+                      1}
+\end{align} 
+\begin{align}
+   T=\vec{x}^{\top}\vec{M}\vec{x}
+\end{align}
+where
+\begin{align}
+    \vec{M}&=\myvec{\frac{4}{5}&-1/5&-1/5&-1/5&-1/5\\
+                   -1/5&\frac{4}{5}&-1/5&-1/5&-1/5\\
+                   -1/5&-1/5&\frac{4}{5}&-1/5&-1/5\\
+                   -1/5&-1/5&-1/5&\frac{4}{5}&-1/5\\
+                   -1/5&-1/5&-1/5&-1/5&\frac{4}{5}}\\
+\end{align}
+we also have 
+\begin{align}
+    \vec{M}^2&=\vec{M}
+\end{align}
+\begin{lemma}
+\label{l2.1}
+\begin{align}
+   \brak{\vec{u}^{\top}\vec{x}}\brak{\vec{x}^{\top}\vec{v}}=\vec{u}^{\top}\brak{\vec{x}\vec{x}^{\top}}\vec{v}
+\end{align}
+This lemma is verified using python simulation.
+\end{lemma}
+\begin{lemma}
+\label{l2.2}
+Let $\vec{A}$, $\vec{B}$ are two continuous independent $l\times 1$ random vectors then $\vec{A}$, $\vec{B}^{\top}\vec{B}$ are also independent.
+\end{lemma}
+\begin{proof}
+Since $\vec{A}$,$\vec{B}$ are independent
+\begin{align}
+ f_{\vec{A},\vec{B}}\brak{\vec{a},\vec{b}}=f_{\vec{A}}\brak{\vec{a}}f_{\vec{B}}\brak{\vec{b}}
+\end{align}
+without loss of generality we can assume the solution of the set
+\begin{align}
+    \cbrak{\vec{B}|\vec{B}^{\top}\vec{B}=c}=\cbrak{\vec{b_1},\vec{b_2},..}
+\end{align}
+\begin{align}
+f_{\vec{A},\vec{B}^{\top}\vec{B}}\brak{\vec{a},c}&=\sum_{i=1}^{\infty}f_{\vec{A},\vec{B}}\brak{\vec{a},\vec{b_i}}\label{2.0.11}\\
+&=f_{\vec{A}}\brak{\vec{a}}\sum_{i=1}^{\infty}\brak{f_{\vec{B}}\brak{\vec{b_i}}}\\
+&=f_{\vec{A}}\brak{\vec{a}}f_{\vec{B}^{\top}\vec{B}}\brak{c}
+\end{align}
+example justifying $\eqref{2.0.11}$:Let X,Y be two continuous random variables.
+\begin{align}
+    \cbrak{\brak{X,Y}|X=2,Y^2=4}&=\cbrak{\cbrak{2,2},\cbrak{2,-2}}\label{2.0.14}\\
+   \implies f_{X,Y^2}\brak{2,4}&=f_{X,Y}\brak{2,2}+f_{X,Y}\brak{2,-2}
+\end{align}
+We can generalize this to higher order random vectors, but the set in $\eqref{2.0.14}$ will be infinite, so $\eqref{2.0.11}$ can be thought as an infinite summation. 
+\end{proof}
+\begin{definition}[cross-covariance]
+\begin{align}
+    Cov\sbrak{\vec{x},\vec{y}}=\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{y}-\mean{\vec{y}}}^{\top}}
+\end{align}
+\end{definition}
+\begin{lemma}
+Two jointly normal vectors are independent if and only if their cross-covariance is zero.
+\end{lemma}
+\begin{theorem}
+\label{t2.2}
+Let $\vec{x}$ be a $5\times 1$ standard multivariate normal random vector.Let $\vec{B}$ be an $l\times 5$ real matrix.Then the $l\times 1$ random vector $\vec{y}$ defined by $\vec{y}=\vec{B}\vec{x}$ has multivariate normal distribution with mean $\mean{\vec{y}}=\vec{0}$ and covariance matrix $Var\sbrak{\vec{y}}=\vec{B}\vec{B}^{\top}$ 
+\end{theorem}
+\begin{proof}
+The joint moment generating function of $\vec{x}$ is
+\begin{align}
+    M_{\vec{x}}\brak{\vec{t}}=exp\brak{\vec{t}^{\top}\mu+\frac{1}{2}\vec{t}^{\top}\vec{V}\vec{t}}
+\end{align}
+since for standard normal distribution $\vec{\mu}=\vec{0}$ and $\vec{V}=\vec{I}$.So
+\begin{align}
+     M_{\vec{x}}\brak{\vec{t}}=exp\brak{\frac{1}{2}\vec{t}^{\top}\vec{I}\vec{t}}\label{2.11}
+\end{align}
+Therefore the joint moment generating function of $\vec{y}$ is
+\begin{align}
+    M_{\vec{y}}\brak{\vec{t}}&=M_{\vec{x}}\brak{\vec{B}^{\top}\vec{t}}\\
+    &=exp\brak{\frac{1}{2}\vec{t}^{\top}\vec{B}\vec{B}^{\top}\vec{t}}
+\end{align}
+on comparing with $\eqref{2.11}$ we can say $\vec{y}$ has multivariate normal distribution. 
+\end{proof}
+\begin{theorem}
+\label{t2.3}
+Let $\vec{x}$ be a $5\times 1$ standard multivariate normal random vector.Let $\vec{A}$ ,$\vec{B}$ be two matrices.Define
+\begin{align}
+    \vec{T_1}&=\vec{A}\vec{x}\\
+    \vec{T_2}&=\vec{B}\vec{x}
+\end{align}
+Then $\vec{T_1}$ and $\vec{T_2}$ are two independent random vectors if and only if $\vec{A}\vec{B}^{\top}=0$
+\end{theorem}
+\begin{proof}
+From theorem $\ref{t2.2}$,$\vec{T_1}$ and $\vec{T_2}$ are jointly normal.Their cross-covariance is
+\begin{align}
+    Cov\sbrak{\vec{T_1},\vec{T_2}}&=\mean{\brak{\vec{T_1}-\mean{\vec{T_1}}}\brak{\vec{T_2}-\mean{\vec{T_2}}}^{\top}}\\
+    &=\mean{\brak{\vec{A}\vec{x}-\mean{\vec{A}\vec{x}}}\brak{\vec{B}\vec{x}-\mean{\vec{B}\vec{x}}}^{\top}}\\
+    &=\vec{A}\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{x}-\mean{\vec{x}}}^{\top}}\vec{B}^{\top}\\
+    &=\vec{A}Var\sbrak{x}\vec{B}^{\top}\\
+    &=\vec{A}\vec{B}^{\top}
+\end{align}
+So $\vec{T_1}$ and $\vec{T_2}$ are independent if and only if $\vec{A}\vec{B}^{\top}=0$
+\end{proof}
+\begin{theorem}
+Let $\overline{X}$ be the sample mean of size 5 from a standard normal distribution.Then
+\begin{enumerate}
+    \item $\overline{X} \sim N(0,\frac{1}{5})$
+    \item $\overline{X}$ and $T$ are independent.
+    \item $T \sim \chi_{4}^2$
+\end{enumerate} 
+where $\chi_{4}^2$  is  chi-square distribution
+with   $4$ degrees of freedom and $T$ is defined as
+\begin{align}
+    T=\sum_{i=1}^{5}(X_i-\overline{X})^2
+\end{align}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item 
+\begin{align}
+    \overline{X}=\frac{1}{5}\vec{u}^{\top}\vec{x}\label{3.1}
+\end{align}
+From theorem $\ref{t2.2}$ we can say $\overline{X}$ has normal distribution with mean $\mean{\overline{X}}=\vec{0}$ and covariance matrix
+\begin{align}
+    Var\sbrak{\overline{X}}&=\frac{1}{25}\vec{u}^{\top}\vec{u}\\
+    &=\frac{1}{5}
+\end{align}
+\item since $\vec{M}$ is symmetric and idempotent we have
+\begin{align}
+   T&=\vec{x}^{\top}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{M}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{M}^{\top}\vec{M}\vec{x}\\
+    &=\brak{\vec{M}\vec{x}}^{\top}\brak{\vec{M}\vec{x}}\label{3.5} 
+\end{align}
+\begin{multline}
+    Cov\sbrak{\frac{1}{5}\vec{u}^{\top}\vec{x},\vec{M}\vec{x}}=\mean{\brak{\frac{1}{5}\vec{u}^{\top}\vec{x}-\mean{\frac{1}{5}\vec{u}^{\top}\vec{x}}}\\\brak{\vec{M}\vec{x}-\mean{\vec{M}\vec{x}}}^{\top}}
+\end{multline}
+Using lemma $\ref{l2.1}$ we get
+\begin{multline}
+  Cov\sbrak{\frac{1}{5}\vec{u}^{\top}\vec{x},\vec{M}\vec{x}}\\=\frac{1}{5}\vec{u}^{\top}\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{x}-\mean{\vec{x}}}^{\top}}\vec{M}^{\top}  
+\end{multline}
+\begin{align}
+    &=\frac{1}{5}\vec{u}^{\top}Var\sbrak{\vec{x}}\vec{M}\\
+    &=\frac{1}{5}\vec{u}^{\top}\vec{M}\\
+    &=0
+\end{align}
+So $\vec{M}\vec{x}$ and $\frac{1}{5}\vec{u}^{\top}\vec{x}$ are independent.Using lemma $\ref{l2.2}$ we get $\overline{X}$ and T are independent.
+\item Since $\vec{M}$ is symmetric it can be expressed as
+\begin{align}
+    \vec{M}=\vec{P}\vec{D}\vec{P}^{\top}
+\end{align}
+where $\vec{P}$ is orthogonal and $\vec{D}$ is diagonal.Then
+\begin{align}
+    T&=\vec{x}^{\top}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{P}\vec{D}\vec{P}^{\top}\vec{x}\\
+    &=\brak{\vec{P}^{\top}\vec{x}}^{\top}\vec{D}\vec{P}^{\top}\vec{x}\\
+    &=\vec{y}^{\top}\vec{D}\vec{y}
+\end{align}
+where $\vec{y}=\vec{P}^{\top}\vec{x}$.From theorem $\ref{t2.2}$ and orthogonality of $\vec{P}$ we can say
+$\vec{y}\sim N\brak{\vec{0},\vec{I}}$
+\begin{enumerate}
+    \item The eigen values of $\vec{M}$ are $1,1,1,1,0$.So $\vec{D}$ can be written as
+    \begin{align}
+        \vec{D}=\myvec{1&0&0&0&0\\
+                       0&1&0&0&0\\
+                       0&0&1&0&0\\
+                       0&0&0&1&0\\
+                       0&0&0&0&0}
+    \end{align}
+    Let $\vec{v_1},..,\vec{v_5}$ be corresponding eigen vectors.Then $\vec{P}=\brak{\vec{v_1},..,\vec{v_5}}$.Since $\vec{P}$ is orthogonal the dot product of any two eigen vectors is zero.i.e
+    \begin{align}
+        \vec{v_i}^{\top}\vec{v_j}=0 \label{ind}
+    \end{align}
+    for any $i\neq j$
+    \begin{align}
+        \vec{y}&=\myvec{y_1=\vec{v_1}^{\top}\vec{x}\\
+                       y_2=\vec{v_2}^{\top}\vec{x}\\
+                       y_3=\vec{v_3}^{\top}\vec{x}\\
+                       y_4=\vec{v_4}^{\top}\vec{x}\\
+                       y_5=\vec{v_5}^{\top}\vec{x}}\\
+    \end{align}
+    From $\eqref{ind}$ and theorem $\ref{t2.3}$,it follows $y_1,y_2,y_3,y_4,y_5$ are mutually independent.
+    \begin{align}
+         T&=y_1^2+y_2^2+y_3^2+y_4^2 
+    \end{align}
+    So T is sum of squares of four independent standard normal variables which is chi-square distribution with 4 degrees of freedom.
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+\begin{align}
+    \mean{T^2\overline{X}^2}=\mean{T^2}\mean{\overline{X}^2}\label{ra}
+\end{align}
+\begin{align}
+    \mean{\overline{X}^2}&=Var\sbrak{\overline{X}}+\brak{\mean{\overline{X}}}^2\\
+    &=\frac{1}{5}
+\end{align}
+ since T is chi-squared distributed with 4 degrees of freedom
+ \begin{align}
+     \mean{T}&=4\\
+     Var\sbrak{T}&=8\\
+     \implies \mean{T^2}&=Var\sbrak{T}+\brak{\mean{T}}^2\\
+    &=24
+ \end{align}
+ From $\eqref{ra}$
+\begin{align}
+    \mean{T^2\overline{X}^2}=4.8
+\end{align}
+\end{document}
+
