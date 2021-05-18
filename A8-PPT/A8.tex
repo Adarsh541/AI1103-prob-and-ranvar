@@ -1,0 +1,272 @@
+\documentclass{beamer}
+\usepackage{listings}
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%\usetkzobj{all}
+\usetikzlibrary{calc,math}
+\usepackage{float}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\abs}[1]{\vert#1\vert}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usetheme{Boadilla}
+\title{My Presentation}
+\author{Adepu Adarsh Sai}
+\institute{IITH(AI)}
+\date{\today}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+   \begin{block}{chi-square distribution}
+ Let $X_1,X_2,..X_k$ be i.i.d  standard normal random variables.Define a random variable Y as
+ \begin{align}
+     Y=X_1^2+X_2^2+....+X_k^2
+ \end{align}
+ We say Y is chi-square distributed with k degrees of freedom.The mean and variance is given by
+ \begin{align}
+   \mean{Y}&=k\\
+   Var\sbrak{Y}&=2k
+ \end{align}
+\end{block} 
+\begin{block}{cross-covariance}
+\begin{align}
+    Cov\sbrak{\Vec{x},\vec{y}}=\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{y}-\mean{\vec{y}}}^{\top}}
+\end{align}
+\end{block}
+\end{frame}
+\begin{frame}
+ \begin{block}{Theorem-1}
+ Let $\vec{x}$ be a $k\times 1$ standard multivariate normal random vector.Let $\vec{B}$ be an $l\times k$ real matrix.Then the $l\times 1$ random vector $\vec{y}$ defined by $\vec{y}=\vec{B}\vec{x}$ has multivariate normal distribution with mean $\mean{\vec{y}}=\vec{0}$ and covariance matrix $Var\sbrak{\vec{y}}=\vec{B}\vec{B}^{\top}$ 
+ \end{block}
+ \textbf{PROOF:}\\
+The joint moment generating function of $\vec{x}$ is
+\begin{align}
+    M_{\vec{x}}\brak{\vec{t}}=exp\brak{\vec{t}^{\top}\mu+\frac{1}{2}\vec{t}^{\top}\vec{V}\vec{t}}
+\end{align}
+since for standard normal distribution $\vec{\mu}=\vec{0}$ and $\vec{V}=\vec{I}$.So
+\begin{align}
+     M_{\vec{x}}\brak{\vec{t}}=exp\brak{\frac{1}{2}\vec{t}^{\top}\vec{I}\vec{t}}\label{2.11}
+\end{align}
+Therefore the joint moment generating function of $\vec{y}$ is
+\end{frame}
+\begin{frame}
+\begin{align}
+    M_{\vec{y}}\brak{\vec{t}}&=M_{\vec{x}}\brak{\vec{B}^{\top}\vec{t}}\\
+    &=exp\brak{\frac{1}{2}\vec{t}^{\top}\vec{B}\vec{B}^{\top}\vec{t}}
+\end{align}
+on comparing with $\eqref{2.11}$ we can say $\vec{y}$ has multivariate normal distribution.
+\begin{block}{Theorem-2}
+Let $\vec{x}$ be a $k\times 1$ standard multivariate normal random vector.Let $\vec{A}$ ,$\vec{B}$ be two matrices.Define
+\begin{align}
+    \vec{T_1}&=\vec{A}\vec{x}\\
+    \vec{T_2}&=\vec{B}\vec{x}
+\end{align}
+Then $\vec{T_1}$ and $\vec{T_2}$ are two independent random vectors if and only if $\vec{A}\vec{B}^{\top}=0$
+\end{block}
+\end{frame}
+\begin{frame}
+\textbf{PROOF}\\
+From theorem-1, $\vec{T_1}$ and $\vec{T_2}$ are  jointly normal vectors.Their cross-covariance is
+\begin{align}
+    Cov\sbrak{\vec{T_1},\vec{T_2}}&=\mean{\brak{\vec{T_1}-\mean{\vec{T_1}}}\brak{\vec{T_2}-\mean{\vec{T_2}}}^{\top}}\\
+    &=\mean{\brak{\vec{A}\vec{x}-\mean{\vec{A}\vec{x}}}\brak{\vec{B}\vec{x}-\mean{\vec{B}\vec{x}}}^{\top}}\\
+    &=\vec{A}\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{x}-\mean{\vec{x}}}^{\top}}\vec{B}^{\top}\\
+    &=\vec{A}Var\sbrak{x}\vec{B}^{\top}\\
+    &=\vec{A}\vec{B}^{\top}
+\end{align}
+Two jointly normal vectors are independent if and only if their cross-covariance is zero.
+So $\vec{T_1}$ and $\vec{T_2}$ are independent if and only if $\vec{A}\vec{B}^{\top}=0$    
+\end{frame}
+\begin{frame}
+\begin{block}{Theorem-3}
+  Let $\overline{X}$ be the sample mean of size 5 from a standard normal distribution.Then
+\begin{enumerate}
+    \item $\overline{X} \sim N(0,\frac{1}{5})$
+    \item $\overline{X}$ and $T$ are independent.
+    \item $T \sim \chi_{4}^2$
+\end{enumerate} 
+where $\chi_{4}^2$  is  chi-square distribution
+with   $4$ degrees of freedom and $T$\brak{\text{Sample variance}} is given by
+\begin{align}
+    T=\sum_{i=1}^{5}(X_i-\overline{X})^2
+\end{align}
+\end{block}
+\end{frame}
+\begin{frame}
+\textbf{PROOF}\\
+\begin{align}
+    \overline{X}=\frac{1}{5}\vec{u}^{\top}\vec{x}\label{3.1}
+\end{align}
+From theorem-1 we can say $\overline{X}$ has normal distribution with mean $\mean{\overline{X}}=\vec{0}$ and covariance matrix
+\begin{align}
+    Var\sbrak{\overline{X}}&=\frac{1}{25}\vec{u}^{\top}\vec{u}\\
+    &=\frac{1}{5}
+\end{align}
+\end{frame}
+\begin{frame}
+  \begin{align}
+   T=\vec{x}^{\top}\vec{M}\vec{x}
+\end{align}
+where
+\begin{align}
+    \vec{M}&=\myvec{\frac{4}{5}&-1/5&-1/5&-1/5&-1/5\\
+                   -1/5&\frac{4}{5}&-1/5&-1/5&-1/5\\
+                   -1/5&-1/5&\frac{4}{5}&-1/5&-1/5\\
+                   -1/5&-1/5&-1/5&\frac{4}{5}&-1/5\\
+                   -1/5&-1/5&-1/5&-1/5&\frac{4}{5}}\\
+\end{align}
+we also have 
+\begin{align}
+    \vec{M}^2&=\vec{M}
+\end{align}  
+\end{frame}
+
+\begin{frame}
+
+\begin{align}
+   T&=\vec{x}^{\top}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{M}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{M}^{\top}\vec{M}\vec{x}\\
+    &=\brak{\vec{M}\vec{x}}^{\top}\brak{\vec{M}\vec{x}}\label{3.5} 
+\end{align}
+\begin{align}
+    Cov\sbrak{\frac{1}{5}\vec{u}^{\top}\vec{x},\vec{M}\vec{x}}&=\mean{\brak{\frac{1}{5}\vec{u}^{\top}\vec{x}-\mean{\frac{1}{5}\vec{u}^{\top}\vec{x}}}\brak{\vec{M}\vec{x}-\mean{\vec{M}\vec{x}}}^{\top}}\\
+    &=\frac{1}{5}\vec{u}^{\top}\mean{\brak{\vec{x}-\mean{\vec{x}}}\brak{\vec{x}-\mean{\vec{x}}}^{\top}}\vec{M}^{\top} \\
+    &=\frac{1}{5}\vec{u}^{\top}Var\sbrak{\vec{x}}\vec{M}\\
+    &=\frac{1}{5}\vec{u}^{\top}\vec{M}\\
+    &=0
+\end{align}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma}
+ Functions of independent random variables are themselves independent.
+\end{block}
+\begin{block}{proof that $\vec{y}=\vec{x}^{\top}\vec{x}$ is a function}
+Assume that it is not a function. So there exist $\vec{x_1}\in\mathbb{R}^n $, $a,b\in\mathbb{R}$, $a\neq b$ such that 
+\begin{align}
+    \vec{x_1}^{\top}\vec{x_1}&=a\label{30}\\
+    \vec{x_1}^{\top}\vec{x_1}&=b\label{31}
+\end{align}
+But from $\eqref{30}$ and $\eqref{31}$ it can clearly be seen that 
+\begin{align}
+    a=b
+\end{align}
+which is a contradiction. So our assumption is wrong. Therefore $\vec{y}:\mathbb{R}^n\rightarrow\mathbb{R}$ is a function.
+\end{block}
+\end{frame}
+\begin{frame}
+   So $\vec{M}\vec{x}$ and $\frac{1}{5}\vec{u}^{\top}\vec{x}$ are independent.Since functions of two independent variables are also independent, we can say $\overline{X}$ and T(A function of $\vec{M}\vec{x}$)are independent.\\
+   
+Since $\vec{M}$ is symmetric it can be expressed as
+\begin{align}
+    \vec{M}=\vec{P}\vec{D}\vec{P}^{\top}
+\end{align}
+where $\vec{P}$ is orthogonal and $\vec{D}$ is diagonal.Then
+\begin{align}
+    T&=\vec{x}^{\top}\vec{M}\vec{x}\\
+    &=\vec{x}^{\top}\vec{P}\vec{D}\vec{P}^{\top}\vec{x}\\
+    &=\brak{\vec{P}^{\top}\vec{x}}^{\top}\vec{D}\vec{P}^{\top}\vec{x}\\
+    &=\vec{y}^{\top}\vec{D}\vec{y}
+\end{align}
+where $\vec{y}=\vec{P}^{\top}\vec{x}$.Since $\vec{x}$ is standard normal, from theorem-1 we can say $\vec{y}$ is also jointly normal with
+\end{frame}
+\begin{frame}
+\begin{align}
+    \mean{\vec{y}}&=0\\
+    Var\sbrak{\vec{y}}&=\vec{P}^{\top}\brak{\vec{P}^{\top}}^{\top}\\
+    &=\vec{P}^{\top}\vec{P}\\
+    &=\vec{I} \hspace{1cm} \brak{\text{Since P is orthogonal}}
+\end{align}
+So $\vec{y}\sim N\brak{0,\vec{I}}$ is standard normal\\
+The eigen values of $\vec{M}$ are $1,1,1,1,0$.So $\vec{D}$ can be written as
+    \begin{align}
+        \vec{D}=\myvec{1&0&0&0&0\\
+                       0&1&0&0&0\\
+                       0&0&1&0&0\\
+                       0&0&0&1&0\\
+                       0&0&0&0&0}
+    \end{align}
+    Let $\vec{v_1},..,\vec{v_5}$ be corresponding eigen vectors.Then $\vec{P}=\brak{\vec{v_1},..,\vec{v_5}}$.Since $\vec{P}$ is orthogonal the dot product of any two eigen vectors is zero.i.e
+    \begin{align}
+        \vec{v_i}^{\top}\vec{v_j}=0 \label{ind}
+        \hspace{1cm}\text{for any $i\neq j$ }
+    \end{align}
+      
+\end{frame}
+\begin{frame}
+    \begin{align}
+    \vec{y}&=\vec{P}^{\top}\vec{x}\\
+     \implies   \vec{y}&=\myvec{y_1=\vec{v_1}^{\top}\vec{x}\\
+                       y_2=\vec{v_2}^{\top}\vec{x}\\
+                       y_3=\vec{v_3}^{\top}\vec{x}\\
+                       y_4=\vec{v_4}^{\top}\vec{x}\\
+                       y_5=\vec{v_5}^{\top}\vec{x}}\\
+    \end{align}
+    From $\eqref{ind}$ and theorem-2, it follows $y_1,y_2,y_3,y_4,y_5$ are mutually independent.
+    \begin{align}
+         T&=\vec{y}^{\top}\vec{D}\vec{y}\\
+        \implies T&=y_1^2+y_2^2+y_3^2+y_4^2 
+    \end{align}
+    So T is sum of squares of four independent standard normal variables which is chi-square distribution with 4 degrees of freedom.
+\end{frame}
+\begin{frame}{Question}
+  \begin{block}{gov/stats/2019/STATS-P1-IESISS,(Q.25)}
+   Let $X_1,X_2,X_3,X_4,X_5$ be a random sample of size 5 from a population having standard normal distribution.If 
+$\overline{X}=\frac{1}{5}\sum_{i=1}^5 X_i$ and $T=\sum_{i=1}^5\brak{X_i-\overline{X}}^2$
+then $\mean{T^2\overline{X}^2}$ is equal to 
+\begin{enumerate}
+    \item 3
+    \item 3.6
+    \item 4.8
+    \item 5.2
+\end{enumerate} 
+  \end{block}  
+\end{frame}
+\begin{frame}{Solution}
+   \begin{align}
+    \mean{T^2\overline{X}^2}=\mean{T^2}\mean{\overline{X}^2}\label{ra}
+\end{align}
+\begin{align}
+    \mean{\overline{X}^2}&=Var\sbrak{\overline{X}}+\brak{\mean{\overline{X}}}^2\\
+    &=\frac{1}{5}
+\end{align}
+
+ since T is chi-squared distributed with 4 degrees of freedom
+ \begin{align}
+     \mean{T}&=4\\
+     Var\sbrak{T}&=8\\
+     \implies \mean{T^2}&=Var\sbrak{T}+\brak{\mean{T}}^2\\
+    &=24
+ \end{align}
+ From $\eqref{ra}$
+\begin{align}
+    \mean{T^2\overline{X}^2}=4.8
+\end{align} 
+\end{frame}
+\end{document}
